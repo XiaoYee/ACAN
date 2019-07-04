@@ -11,12 +11,14 @@ You can find arguments and hyper-parameters defined in train_batch.py with defau
 
 Under code/, use the following command for training any source-target pair from the amazon benchmark:
 ```
-CUDA_VISIBLE_DEVICES="0" python train_batch.py \
+CUDA_VISIBLE_DEVICES="0" python train_batchs.py \
 --emb ../glove.840B.300d.txt \
 --dataset amazon \
 --source $source \
 --target $target \
---n-class 2 
+--n-class 2  \
+--lamda1 -0.1 --lamda2 0.1 --lamda3 5 --lamda4 1.5 \
+--epochs 30 
 ```
 where *--emb* is the path to the pre-trained word embeddings. *$source* and *$target* are domains from the amazon benchmark, both in ['book', 'dvd', 'electronics', 'kitchen']. --n-class denoting the number of output classes is set to 2 as we only consider binary classification (positive or negative) on this dataset. All other hyper-parameters are left as their defaults.
 
